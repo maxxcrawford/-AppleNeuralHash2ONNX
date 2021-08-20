@@ -1,0 +1,4 @@
+torchtext
+onnxruntime
+Pillow
+torch
