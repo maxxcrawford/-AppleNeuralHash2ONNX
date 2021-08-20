@@ -2,3 +2,4 @@ torchtext
 onnxruntime
 Pillow
 torch
+numpy
