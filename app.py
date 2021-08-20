@@ -17,8 +17,9 @@ import onnxruntime
 import numpy as np
 from PIL import Image
 import gradio as gr
+import torch
 
-
+torch.hub.download_url_to_file('https://cdn.pixabay.com/photo/2017/09/11/15/58/sunset-2739472_1280.jpg', 'sunset.jpg')
 
 # Load ONNX model
 session = onnxruntime.InferenceSession('model.onnx')
@@ -48,8 +49,9 @@ def inference(img):
   return hash_hex
  
 title = "AppleNeuralHash"
-description = "Gradio demo for Apple NeuralHash is a perceptual hashing method for images based on neural networks. It can tolerate image resize and compression. To use it, simply upload your image, or click one of the examples to load them. Read more at the links below."
+description = "Gradio demo for Apple NeuralHash, a perceptual hashing method for images based on neural networks. It can tolerate image resize and compression. To use it, simply upload your image, or click one of the examples to load them. Read more at the links below."
 article = "<p style='text-align: center'><a href='https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX'>Github Repo</a></p>"
+examples = [['sunset.jpg']]
 
 gr.Interface(
     inference, 
@@ -57,5 +59,6 @@ gr.Interface(
     gr.outputs.Textbox(label="Output Text"),
     title=title,
     description=description,
-    article=article
+    article=article,
+    examples=examples
     ).launch(debug=True)
