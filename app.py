@@ -16,11 +16,7 @@ import sys
 import onnxruntime
 import numpy as np
 from PIL import Image
-import torchtext
 
-
-torchtext.utils.download_from_url("https://drive.google.com/uc?id=146kojNCMfswRbWNE4NKRyOiRnGs12rZN", root=".")
-torchtext.utils.download_from_url("https://drive.google.com/uc?id=1a3omUl96fKkvFgUHsR3RD9W3kjSAgJFK", root=".")
 
 
 
