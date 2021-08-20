@@ -47,9 +47,9 @@ def inference(img):
   
   return hash_hex
  
-title = "Anime2Sketch"
-description = "demo for Anime2Sketch. To use it, simply upload your image, or click one of the examples to load them. Read more at the links below."
-article = "<p style='text-align: center'><a href='https://arxiv.org/abs/2104.05703'>Adversarial Open Domain Adaption for Sketch-to-Photo Synthesis</a> | <a href='https://github.com/Mukosame/Anime2Sketch'>Github Repo</a></p>"
+title = "AppleNeuralHash"
+description = "Gradio demo for Apple NeuralHash is a perceptual hashing method for images based on neural networks. It can tolerate image resize and compression. To use it, simply upload your image, or click one of the examples to load them. Read more at the links below."
+article = "<p style='text-align: center'><a href='https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX'>Github Repo</a></p>"
 
 gr.Interface(
     inference, 
