@@ -56,7 +56,7 @@ examples = [['sunset.jpg']]
 gr.Interface(
     inference, 
     gr.inputs.Image(type="file", label="Input"), 
-    gr.outputs.Textbox(label="Output Text"),
+    gr.outputs.Textbox(label="Output"),
     title=title,
     description=description,
     article=article,
