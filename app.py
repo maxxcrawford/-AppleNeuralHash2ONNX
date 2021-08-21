@@ -50,7 +50,7 @@ def inference(img):
  
 title = "AppleNeuralHash"
 description = "Gradio demo for Apple NeuralHash, a perceptual hashing method for images based on neural networks. It can tolerate image resize and compression. To use it, simply upload your image, or click one of the examples to load them. Read more at the links below."
-article = "<p style='text-align: center'><a href='https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX'>Github Repo</a></p>"
+article = "<p style='text-align: center'><a href='https://www.apple.com/child-safety/pdf/CSAM_Detection_Technical_Summary.pdf'>CSAM Detection Technical Summary</a> | <a href='https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX'>Github Repo</a></p>"
 examples = [['sunset.jpg']]
 
 gr.Interface(
