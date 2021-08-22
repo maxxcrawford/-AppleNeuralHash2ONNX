@@ -19,11 +19,11 @@ from PIL import Image
 import gradio as gr
 import torch
 import zipfile
-
+import os 
+os.system('wget https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX/files/7008624/apple-neural-hash.zip')
 
 torch.hub.download_url_to_file('https://cdn.pixabay.com/photo/2017/09/11/15/58/sunset-2739472_1280.jpg', 'sunset.jpg')
 
-torch.hub.download_url_to_file('https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX/files/7008624/apple-neural-hash.zip', '.')
 
 with zipfile.ZipFile('apple-neural-hash.zip', 'r') as zip_ref:
     zip_ref.extractall('.')
