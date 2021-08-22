@@ -20,7 +20,9 @@ import gradio as gr
 import torch
 import zipfile
 import os 
-os.system('wget https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX/files/7008624/apple-neural-hash.zip')
+os.system('wget https://www.dropbox.com/s/ggf6ok63u7hywhc/neuralhash_128x96_seed1.dat')
+os.system('wget https://www.dropbox.com/s/1jug4wtevz1rol0/model.onnx')
+
 
 torch.hub.download_url_to_file('https://cdn.pixabay.com/photo/2017/09/11/15/58/sunset-2739472_1280.jpg', 'sunset.jpg')
 
@@ -28,10 +30,10 @@ torch.hub.download_url_to_file('https://cdn.pixabay.com/photo/2017/09/11/15/58/s
 with zipfile.ZipFile('apple-neural-hash.zip', 'r') as zip_ref:
     zip_ref.extractall('.')
 # Load ONNX model
-session = onnxruntime.InferenceSession('apple-neural-hash/model.onnx')
+session = onnxruntime.InferenceSession('model.onnx')
 
 # Load output hash matrix
-seed1 = open('apple-neural-hash/neuralhash_128x96_seed1.dat', 'rb').read()[128:]
+seed1 = open('neuralhash_128x96_seed1.dat', 'rb').read()[128:]
 seed1 = np.frombuffer(seed1, dtype=np.float32)
 seed1 = seed1.reshape([96, 128])
 
