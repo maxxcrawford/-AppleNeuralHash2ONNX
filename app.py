@@ -18,7 +18,6 @@ import numpy as np
 from PIL import Image
 import gradio as gr
 import torch
-import zipfile
 import os 
 os.system('wget https://www.dropbox.com/s/ggf6ok63u7hywhc/neuralhash_128x96_seed1.dat')
 os.system('wget https://www.dropbox.com/s/1jug4wtevz1rol0/model.onnx')
@@ -27,8 +26,6 @@ os.system('wget https://www.dropbox.com/s/1jug4wtevz1rol0/model.onnx')
 torch.hub.download_url_to_file('https://cdn.pixabay.com/photo/2017/09/11/15/58/sunset-2739472_1280.jpg', 'sunset.jpg')
 
 
-with zipfile.ZipFile('apple-neural-hash.zip', 'r') as zip_ref:
-    zip_ref.extractall('.')
 # Load ONNX model
 session = onnxruntime.InferenceSession('model.onnx')
 
