@@ -51,7 +51,6 @@ def inference(img, img2):
   hash_bits = ''.join(['1' if it >= 0 else '0' for it in hash_output])
   hash_hex = '{:0{}x}'.format(int(hash_bits, 2), len(hash_bits) // 4)
   
-  
   image2 = Image.open(img2.name).convert('RGB')
   image2 = image2.resize([360, 360])
   arr2 = np.array(image2).astype(np.float32) / 255.0
