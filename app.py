@@ -35,7 +35,7 @@ seed1 = np.frombuffer(seed1, dtype=np.float32)
 seed1 = seed1.reshape([96, 128])
 
 # Preprocess image
-def inference(img):
+def inference(img, img2):
   image = Image.open(img.name).convert('RGB')
   image = image.resize([360, 360])
   arr = np.array(image).astype(np.float32) / 255.0
@@ -51,7 +51,23 @@ def inference(img):
   hash_bits = ''.join(['1' if it >= 0 else '0' for it in hash_output])
   hash_hex = '{:0{}x}'.format(int(hash_bits, 2), len(hash_bits) // 4)
   
-  return hash_hex
+  
+  image2 = Image.open(img2.name).convert('RGB')
+  image2 = image2.resize([360, 360])
+  arr2 = np.array(image2).astype(np.float32) / 255.0
+  arr2 = arr2 * 2.0 - 1.0
+  arr2 = arr2.transpose(2, 0, 1).reshape([1, 3, 360, 360])
+  
+  # Run model
+  inputs2 = {session.get_inputs()[0].name: arr2}
+  outs2 = session.run(None, inputs2)
+  
+  # Convert model output to hex hash
+  hash_output2 = seed1.dot(outs2[0].flatten())
+  hash_bits2 = ''.join(['1' if it >= 0 else '0' for it in hash_output2])
+  hash_hex2 = '{:0{}x}'.format(int(hash_bits2, 2), len(hash_bits2) // 4)
+  
+  return hash_hex, hash_hex2
  
 title = "AppleNeuralHash"
 description = "Gradio demo for Apple NeuralHash, a perceptual hashing method for images based on neural networks. It can tolerate image resize and compression. To use it, simply upload your image, or click one of the examples to load them. Read more at the links below."
@@ -60,8 +76,8 @@ examples = [['sunset.jpg']]
 
 gr.Interface(
     inference, 
-    gr.inputs.Image(type="file", label="Input"), 
-    gr.outputs.Textbox(label="Output"),
+    [gr.inputs.Image(type="file", label="Input Image"),gr.inputs.Image(type="file", label="Input Image")], 
+    [gr.outputs.Textbox(label="Output"),gr.outputs.Textbox(label="Output")] ,
     title=title,
     description=description,
     article=article,
