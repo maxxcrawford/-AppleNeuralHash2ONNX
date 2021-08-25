@@ -74,7 +74,13 @@ def inference(img, img2):
   hash_bits2 = ''.join(['1' if it >= 0 else '0' for it in hash_output2])
   hash_hex2 = '{:0{}x}'.format(int(hash_bits2, 2), len(hash_bits2) // 4)
   
-  return hash_hex, hash_hex2
+  if hash_hex == hash_hex2:
+    check = "Same Hash"
+  else:
+    check = "Different Hash"
+  
+  
+  return check, hash_hex, hash_hex2
  
 title = "AppleNeuralHash"
 description = "Gradio demo for Apple NeuralHash, a perceptual hashing method for images based on neural networks. It can tolerate image resize and compression. To use it, simply upload your image, or click one of the examples to load them. Read more at the links below."
@@ -84,7 +90,7 @@ examples = [['sunset.jpg','rotate.png'],['dog.png','same.png']]
 gr.Interface(
     inference, 
     [gr.inputs.Image(type="file", label="Input Image"),gr.inputs.Image(type="file", label="Input Image")], 
-    [gr.outputs.Textbox(label="Output"),gr.outputs.Textbox(label="Output")] ,
+    [gr.outputs.Textbox(label="Check"),gr.outputs.Textbox(label="First Hash"),gr.outputs.Textbox(label="Second Hash")] ,
     title=title,
     description=description,
     article=article,
