@@ -24,7 +24,7 @@ os.system('wget https://www.dropbox.com/s/1jug4wtevz1rol0/model.onnx')
 
 
 torch.hub.download_url_to_file('https://cdn.pixabay.com/photo/2017/09/11/15/58/sunset-2739472_1280.jpg', 'sunset.jpg')
-torch.hub.download_url_to_file('https://i.imgur.com/ka5s8K7.png', 'rotate.png')
+torch.hub.download_url_to_file('https://i.imgur.com/W8aXbd2.png', 'rotate.png')
 
 torch.hub.download_url_to_file('https://user-images.githubusercontent.com/1328/129860794-e7eb0132-d929-4c9d-b92e-4e4faba9e849.png', 'dog.png')
 torch.hub.download_url_to_file('https://user-images.githubusercontent.com/1328/129860810-f414259a-3253-43e3-9e8e-a0ef78372233.png', 'same.png')
