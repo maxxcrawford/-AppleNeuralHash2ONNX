@@ -24,7 +24,7 @@ os.system('wget https://www.dropbox.com/s/1jug4wtevz1rol0/model.onnx')
 
 
 torch.hub.download_url_to_file('https://cdn.pixabay.com/photo/2017/09/11/15/58/sunset-2739472_1280.jpg', 'sunset.jpg')
-torch.hub.download_url_to_file('https://cdn.pixabay.com/photo/2021/02/10/22/13/lake-6003727_1280.jpg', 'lake.jpg')
+torch.hub.download_url_to_file('https://i.imgur.com/ka5s8K7.png', 'rotate.png')
 
 
 
@@ -74,7 +74,7 @@ def inference(img, img2):
 title = "AppleNeuralHash"
 description = "Gradio demo for Apple NeuralHash, a perceptual hashing method for images based on neural networks. It can tolerate image resize and compression. To use it, simply upload your image, or click one of the examples to load them. Read more at the links below."
 article = "<p style='text-align: center'><a href='https://www.apple.com/child-safety/pdf/CSAM_Detection_Technical_Summary.pdf'>CSAM Detection Technical Summary</a> | <a href='https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX'>Github Repo</a></p>"
-examples = [['sunset.jpg','lake.jpg']]
+examples = [['sunset.jpg','rotate.png']]
 
 gr.Interface(
     inference, 
