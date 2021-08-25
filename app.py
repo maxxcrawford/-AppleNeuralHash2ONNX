@@ -42,6 +42,8 @@ seed1 = open('neuralhash_128x96_seed1.dat', 'rb').read()[128:]
 seed1 = np.frombuffer(seed1, dtype=np.float32)
 seed1 = seed1.reshape([96, 128])
 
+pre_text = "<p style='display: flex; flex-grow: 1; align-items: center; justify-content: center; padding: 2rem 1rem; font-size: 1.5rem; line-height: 2rem; font-weight: 400;'>{}</p>"
+
 # Preprocess image
 def inference(img, img2):
   image = Image.open(img.name).convert('RGB')
@@ -75,13 +77,9 @@ def inference(img, img2):
   hash_hex2 = '{:0{}x}'.format(int(hash_bits2, 2), len(hash_bits2) // 4)
   
   if hash_hex == hash_hex2:
-    check = "Same Hash"
-  else:
-    check = "Different Hash"
-  
-  
-  return check, hash_hex, hash_hex2
- 
+    return pre_text.format("Same Hash"), pre_text.format(hash_hex), pre_text.format(hash_hex2)
+  return pre_text.format("Different Hash"), pre_text.format(hash_hex), pre_text.format(hash_hex2)
+   
 title = "AppleNeuralHash"
 description = "Gradio demo for Apple NeuralHash, a perceptual hashing method for images based on neural networks. It can tolerate image resize and compression. To use it, simply upload your image, or click one of the examples to load them. Read more at the links below."
 article = "<p style='text-align: center'><a href='https://www.apple.com/child-safety/pdf/CSAM_Detection_Technical_Summary.pdf'>CSAM Detection Technical Summary</a> | <a href='https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX'>Github Repo</a> | <a href='https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX/issues/1'>Working Collision example images from github issue</a></p> "
@@ -90,7 +88,7 @@ examples = [['sunset.jpg','rotate.png'],['dog.png','same.png']]
 gr.Interface(
     inference, 
     [gr.inputs.Image(type="file", label="Input Image"),gr.inputs.Image(type="file", label="Input Image")], 
-    [gr.outputs.Textbox(label="Check"),gr.outputs.Textbox(label="First Hash"),gr.outputs.Textbox(label="Second Hash")] ,
+    [gr.outputs.HTML(label="Comparison.."), gr.outputs.HTML(label="First Hash"), gr.outputs.HTML(label="Second Hash")],
     title=title,
     description=description,
     article=article,
