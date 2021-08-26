@@ -32,6 +32,10 @@ torch.hub.download_url_to_file('https://user-images.githubusercontent.com/1328/1
 torch.hub.download_url_to_file('https://cdn.pixabay.com/photo/2021/08/23/17/53/cat-6568422_1280.jpg', 'cat1.jpg')
 torch.hub.download_url_to_file('https://i.imgur.com/fMoVhSz.png', 'cat2.png')
 
+torch.hub.download_url_to_file('https://cdn.pixabay.com/photo/2021/08/10/09/41/lesser-sand-plover-6535531_1280.jpg', 'bird1.jpg')
+torch.hub.download_url_to_file('https://i.imgur.com/jDgKAC7.png', 'bird2.png')
+
+
 
 
 
@@ -85,7 +89,7 @@ def inference(img, img2):
 title = "AppleNeuralHash"
 description = "Gradio demo for Apple NeuralHash, a perceptual hashing method for images based on neural networks. It can tolerate image resize and compression. To use it, simply upload your image, or click one of the examples to load them. Read more at the links below."
 article = "<p style='text-align: center'><a href='https://www.apple.com/child-safety/pdf/CSAM_Detection_Technical_Summary.pdf'>CSAM Detection Technical Summary</a> | <a href='https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX'>Github Repo</a> | <a href='https://github.com/AsuharietYgvar/AppleNeuralHash2ONNX/issues/1'>Working Collision example images from github issue</a></p> "
-examples = [['sunset.jpg','rotate.png'],['dog.png','same.png'],['cat1.jpg','cat2.png']]
+examples = [['sunset.jpg','rotate.png'],['dog.png','same.png'],['cat1.jpg','cat2.png'],['bird1.jpg','bird2.png']]
 
 gr.Interface(
     inference, 
