@@ -41,7 +41,7 @@ torch.hub.download_url_to_file('https://i.imgur.com/jDgKAC7.png', 'bird2.png')
 
 
 # Load ONNX model
-session = onnxruntime.InferenceSession('model.onnx')
+session = onnxruntime.InferenceSession('model.onnx', providers=['AzureExecutionProvider', 'CPUExecutionProvider'])
 
 # Load output hash matrix
 seed1 = open('neuralhash_128x96_seed1.dat', 'rb').read()[128:]
