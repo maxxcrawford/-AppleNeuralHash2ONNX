@@ -19,8 +19,8 @@ from PIL import Image
 import gradio as gr
 import torch
 import os 
-os.system('wget https://www.dropbox.com/s/ggf6ok63u7hywhc/neuralhash_128x96_seed1.dat')
-os.system('wget https://www.dropbox.com/s/1jug4wtevz1rol0/model.onnx')
+os.system('https://www.dropbox.com/scl/fi/0zdxn7tcahrowddmew6l3/neuralhash_128x96_seed1.dat?rlkey=l2zxcq6tdtdil2abg7vezmcwq&dl=0')
+os.system('https://www.dropbox.com/scl/fi/12fou4r5f014xd780hs71/model.onnx?rlkey=dhxscfocphkvu1r2ejlfw8c1h&dl=0')
 
 
 torch.hub.download_url_to_file('https://cdn.pixabay.com/photo/2017/09/11/15/58/sunset-2739472_1280.jpg', 'sunset.jpg')
